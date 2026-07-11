@@ -1,6 +1,12 @@
 # Intranet de Monitoreo GIS — Procesadora Perú S.A.C.
 
-> **Demo en vivo:** [fhernandezleonUSAT.github.io/intranet-procesadora-peru](https://fhernandezleonUSAT.github.io/intranet-procesadora-peru)
+## Demo en vivo
+
+[![Demo Intranet GIS - Procesadora Perú](https://img.youtube.com/vi/w3HSixlCdi0/maxresdefault.jpg)](https://youtu.be/w3HSixlCdi0)
+
+> Haz clic en la imagen para ver la demo completa en YouTube.
+
+---
 
 Aplicación web (intranet corporativa) para el monitoreo en tiempo real de la ubicación de los operarios de Procesadora Perú S.A.C. sobre un mapa interactivo, con reportes operativos de panel, permanencia e incidencias.
 
