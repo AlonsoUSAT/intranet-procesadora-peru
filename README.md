@@ -58,5 +58,5 @@ intranet-procesadora-peru/
 Esta intranet es uno de tres sistemas integrados desarrollados para Procesadora Perú:
 
 - **App Android** (offline-first, toma de inventario en campo) → [inventory_taking_app](https://github.com/ProgramadorZ007/inventory_taking_app)
-- **Intranet Web GIS** (este repositorio) → monitoreo en tiempo real
+- **Intranet Web GIS** (este repositorio) → [monitoreo en tiempo real](https://alonsousat.github.io/intranet-procesadora-peru)
 - **Sitio web corporativo** (React + Vite) → [web-procesadora-peru](https://web-procesadora-peru.vercel.app)
