@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monitor GIS · Procesadora Perú</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Estilos del dashboard -->
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       BARRA SUPERIOR (Topbar estandarizado)
+  ═══════════════════════════════════════════════ -->
+  <header class="topbar">
+    <button class="btn-toggle-sidebar" id="btnToggleSidebar" title="Ocultar/Mostrar menú">
+      <svg viewBox="0 0 24 24">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+    <div class="topbar-titulo">
+      <h1>Monitor GIS en Tiempo Real</h1>
+      <span class="topbar-subtitulo" id="topbarFecha"></span>
+    </div>
+    <div class="topbar-acciones">
+      <button class="btn-accion" id="btnRefrescar" title="Refrescar ahora">
+        <svg viewBox="0 0 24 24">
+          <polyline points="23 4 23 10 17 10" />
+          <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+        </svg>
+        <span class="btn-accion-text">Refrescar</span>
+      </button>
+      <button class="btn-accion btn-centrar" id="btnCentrar" title="Centrar mapa">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="2" x2="12" y2="6" />
+          <line x1="12" y1="18" x2="12" y2="22" />
+          <line x1="2" y1="12" x2="6" y2="12" />
+          <line x1="18" y1="12" x2="22" y2="12" />
+        </svg>
+        <span class="btn-accion-text">Centrar</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       SIDEBAR LATERAL
+  ═══════════════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo">
+      <a href="index.html" class="logo-icono">
+        <img src="../imagen/LOGO-PNG1.png" alt="Logo Procesadora Perú">
+      </a>
+      <div class="logo-texto">
+        <span class="logo-empresa">Procesadora</span>
+        <span class="logo-pais">Perú S.A.C.</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item activo">
+          <a href="index.html">
+            <span class="nav-icono">
+              <svg viewBox="0 0 24 24">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+              </svg>
+            </span>
+            <span class="nav-label">Monitor GIS</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="reporte-panel.html">
+            <span class="nav-icono">
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </span>
+            <span class="nav-label">Acopio logistico</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="reporte-permanencia.html">
+            <span class="nav-icono">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </span>
+            <span class="nav-label">Permanencia y tiempos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="reporte-incidencias.html">
+            <span class="nav-icono">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </span>
+            <span class="nav-label">Resumen de conteos</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Indicador de estado de conexión -->
+    <div class="sidebar-estado">
+      <div class="estado-dot" id="estadoDot"></div>
+      <span class="estado-texto" id="estadoTexto">Conectando...</span>
+    </div>
+
+    <!-- Próximo refresco -->
+    <div class="sidebar-refresco">
+      <div class="refresco-barra-contenedor">
+        <div class="refresco-barra" id="refrescoBarra"></div>
+      </div>
+      <span class="refresco-label">Refresco en <span id="cuentaRegresiva">15</span>s</span>
+    </div>
+
+    <div class="sidebar-footer" style="padding: 16px; border-top: 1px solid var(--borde-glass); margin-top: auto;">
+      <a href="loginIntranet.html" class="sidebar-link" style="display: flex; align-items: center; gap: 8px; color: var(--color-texto-suave); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line x1="21" y1="12" x2="9" y2="12" />
+        </svg>
+        Cerrar Sesión
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+  ═══════════════════════════════════════════════ -->
+  <main class="contenido-principal">
+
+    <!-- Área del mapa -->
+    <div class="mapa-wrapper">
+      <div id="mapa"></div>
+
+      <!-- Leyenda del mapa -->
+      <div class="leyenda-mapa">
+        <div class="leyenda-item">
+          <span class="leyenda-pin pin-operario"></span>
+          <span>Operario activo</span>
+        </div>
+        <div class="leyenda-item">
+          <span class="leyenda-pin pin-usuario"></span>
+          <span>Tu ubicación</span>
+        </div>
+      </div>
+
+    </div><!-- /mapa-wrapper -->
+
+    <!-- Panel flotante: Lista de Operarios (al costado del mapa) -->
+    <aside class="panel-flotante" id="panelOperarios">
+      <div class="panel-header">
+        <h2>Operarios en Proceso</h2>
+        <span class="panel-badge" id="contadorOperarios">0</span>
+      </div>
+
+      <div class="panel-filtro">
+        <div class="input-filtro-wrapper">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input type="text" id="filtroOperario" class="input-filtro" placeholder="Buscar operario..." />
+        </div>
+      </div>
+
+      <ul class="lista-operarios" id="listaOperarios">
+        <!-- Se llena dinámicamente con JS -->
+        <li class="operario-vacio">Cargando operarios...</li>
+      </ul>
+
+    </aside>
+
+  </main>
+
+  <!-- Configuración centralizada de APIs oficiales -->
+  <script src="../js/api-config.js"></script>
+  <!-- Layout compartido (hamburguesa) -->
+  <script src="../js/layout.js"></script>
+  <!-- Lógica del dashboard -->
+  <script src="../js/app.js"></script>
+</body>
+
+</html>

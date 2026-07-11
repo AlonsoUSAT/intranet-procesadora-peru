@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión · Procesadora Perú</title>
+  <link rel="stylesheet" href="../css/loginIntranet.css">
+</head>
+<body>
+
+  <div id="vista-login" class="contenedor-pantalla">
+    <header class="cabecera-oscura">
+      <span>Intranet</span>
+    </header>
+
+    <main class="fondo-agricola area-principal">
+      <div class="overlay-blur"></div>
+      
+      <div id="tarjeta-login" class="tarjeta-login">
+        <div class="encabezado-tarjeta">
+          <div class="icono-candado-container">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0110 0v4"></path>
+            </svg>
+          </div>
+          <h1 class="titulo-empresa">Procesadora Perú SAC</h1>
+          <p class="subtitulo-empresa">Sistemas de Geolocalización</p>
+          <div class="divisor-texto">
+            <div class="linea"></div>
+            <span>Acceso Intranet</span>
+            <div class="linea"></div>
+          </div>
+        </div>
+
+        <div class="grupo-campo">
+          <label class="etiqueta-campo" for="campoUsuario">Usuario</label>
+          <div class="input-wrapper">
+            <input id="campoUsuario" type="text" class="campo-texto" placeholder="Ingresa tu ID" autocomplete="username">
+            <div class="icono-input">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="grupo-campo">
+          <label class="etiqueta-campo" for="campoContrasena">Contraseña</label>
+          <div class="campo-contrasena-wrapper">
+            <input id="campoContrasena" type="password" class="campo-texto" placeholder="••••••••" autocomplete="current-password">
+            <button id="btnOjo" class="boton-ojo" type="button" aria-label="Mostrar contraseña">
+              <svg id="svgOjoOculto" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="grupo-recordar">
+          <input id="chkRecordar" type="checkbox" class="checkbox-recordar">
+          <label for="chkRecordar">Recordarme</label>
+        </div>
+
+        <div id="contenedorError" class="mensaje-error oculto">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span id="textoError"></span>
+        </div>
+
+        <button id="btnIngresar" class="boton-ingresar">
+          Iniciar Sesión
+        </button>
+
+        <hr class="separador">
+
+        <div class="avisos-seguridad">
+          <p>Acceso restringido a personal autorizado<br>Todas las conexiones son monitoreadas por seguridad</p>
+        </div>
+
+        <div class="soporte-it">
+          <a href="mailto:it@procesadoraperu.com" class="enlace-soporte">
+            Soporte IT
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="pie-pagina">
+      <div>
+        <p class="pie-titulo">Procesadora Perú SAC</p>
+        <p class="pie-copy">© 2026 Procesadora Perú SAC. Liderazgo Agro-Industrial.</p>
+      </div>
+      <div class="pie-enlaces">
+        <a href="#" class="pie-enlace">Política de Privacidad</a>
+        <a href="#" class="pie-enlace">Términos de Servicio</a>
+        <a href="#" class="pie-enlace">Sostenibilidad</a>
+      </div>
+    </footer>
+  </div>
+
+  <div id="vista-exito" class="contenedor-pantalla pantalla-sesion oculto">
+    <header class="cabecera-oscura cabecera-exito">
+      <span>Intranet</span>
+      <div class="insignia-activa">
+        <div class="punto-verde"></div>
+        Sesión activa
+      </div>
+    </header>
+
+    <div class="area-exito">
+      <div class="tarjeta-exito">
+        <div class="icono-exito">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <p class="exito-empresa">Procesadora Perú S.A.C.</p>
+        <h2 class="exito-titulo">Acceso concedido</h2>
+        <p class="exito-subtitulo">Bienvenido al sistema de gestión corporativa.</p>
+
+        <div class="caja-usuario">
+          <div class="avatar-usuario">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div>
+            <p id="lblNombreUsuario" class="usuario-nombre">Usuario</p>
+            <p class="usuario-rol">Usuario autenticado</p>
+          </div>
+        </div>
+
+        <!-- DEBE QUEDAR ASÍ: -->
+<div class="acciones-exito">
+  <a href="../templates/index.html">
+  <button class="btn-dashboard">Ir al Dashboard</button>
+</a>
+  <button id="btnCerrarSesion" class="btn-cerrar">Cerrar sesión</button>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api-config.js"></script>
+  <script src="../js/loginIntranet.js"></script>
+</body>
+
+</html>
