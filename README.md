@@ -2,7 +2,7 @@
 
 ## Demo en vivo
 
-[![Demo Intranet GIS - Procesadora Perú]](https://youtu.be/w3HSixlCdi0)
+[![Demo Intranet GIS - Procesadora Perú](https://img.youtube.com/vi/w3HSixlCdi0/maxresdefault.jpg)](https://youtu.be/w3HSixlCdi0)
 
 > Haz clic en la imagen para ver la demo completa en YouTube.
 
@@ -59,4 +59,4 @@ Esta intranet es uno de tres sistemas integrados desarrollados para Procesadora 
 
 - **App Android** (offline-first, toma de inventario en campo) → [inventory_taking_app](https://github.com/ProgramadorZ007/inventory_taking_app)
 - **Intranet Web GIS** (este repositorio) → monitoreo en tiempo real
-- **Sitio web corporativo** (React + Vite) → próximamente
+- **Sitio web corporativo** (React + Vite) → [web-procesadora-peru](https://web-procesadora-peru.vercel.app)
