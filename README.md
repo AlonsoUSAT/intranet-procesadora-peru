@@ -2,7 +2,7 @@
 
 ## Demo en vivo
 
-[![Demo Intranet GIS - Procesadora Perú](https://img.youtube.com/vi/w3HSixlCdi0/maxresdefault.jpg)](https://youtu.be/w3HSixlCdi0)
+[![Demo Intranet GIS - Procesadora Perú]](https://youtu.be/w3HSixlCdi0)
 
 > Haz clic en la imagen para ver la demo completa en YouTube.
 
